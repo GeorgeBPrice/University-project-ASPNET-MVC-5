@@ -1,0 +1,20 @@
+﻿@using AbodeBoutiqueStore.Infrastructure
+@model Cart
+<li class="nav-item">
+    <!-- the /Catalogue url is passed to the cart, as the return URL 
+    overriding the default return route -->
+    <a asp-page="/Cart" asp-route-returnurl="/Catalogue">
+        <button>
+            <i class="fa fa-shopping-cart"></i>
+            @if (Model.Lines.Count() > 0)
+            {
+                <span class="nav-shop__circle">@Model.Lines.Sum(x => x.Quantity)</span>
+            }
+            else
+            {
+                <span class="nav-shop__circle">0</span>
+            }
+        </button>
+    </a>
+</li>
+

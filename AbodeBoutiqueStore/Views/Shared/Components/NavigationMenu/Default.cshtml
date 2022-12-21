@@ -1,0 +1,13 @@
+﻿@model IEnumerable<string>
+
+<!-- Loop to output the product categories, injected into the shop pages as the product categories menu -->
+@foreach (string category in Model)
+{
+    <a class="btn btn-block
+        @(category == ViewBag.SelectedCategory
+            ? " btn-primary": "btn-outline-secondary")"
+       asp-action="Index" asp-controller="Catalogue"
+       asp-route-category="@category">
+        @category
+    </a>
+}

@@ -1,0 +1,151 @@
+﻿<!-- Header, menu, footer html inserted into all full page views -->
+
+<!DOCTYPE html>
+<html lang="en">
+<!-- Header section that contains meta settings, and links to CSS -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>Abode Boutique</title>
+
+    <link rel="icon" href="/img/Fevicon.png" type="image/png">
+    <link rel="stylesheet" href="/lib/twitter-bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.css">
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<!-- Body section that contains the main page elements -->
+<body>
+    <div>
+        <!-- Top Menu Navigation for each page -->
+        <header class="header_area">
+            <div class="main_menu">
+                <nav class="navbar navbar-expand-lg">
+                    <div class="container">
+                        <a class="navbar-brand" href="/Home"><img src="/img/logo.png" alt="Abode Boutique Logo"></a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span>
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="nav navbar-nav ms-auto me-auto">
+                                <li class="nav-item @(ViewBag.pageName=="Home"?"active":"")"><a class="nav-link" href="/Home">Home</a></li>
+                                <li class="nav-item submenu dropdown @(ViewBag.pageName=="Catalogue"?"active":"")">
+                                    <a href="/Catalogue" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                                       aria-expanded="false">Shop</a>
+                                    <ul class="dropdown-menu">
+                                        <li class="nav-item"><a class="nav-link" href="/Catalogue">Products</a></li>
+                                    </ul>
+                                </li>
+                                <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+                                <li class="nav-item"><a class="nav-link" href="#">Login</a></li>
+                            </ul>
+
+                            <ul class="nav-shop">
+                                <vc:cart-summary />
+                                <li class="nav-item">
+                                    <!-- the /Catalogue url is passed to the cart, as the return URL
+                                         overriding the default return route -->
+                                    <a class="button button-header" asp-page="/Cart" asp-route-returnurl="/Catalogue">
+                                        Buy Now
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Views for each page are rendered here -->
+        @RenderBody()
+
+    </div>
+
+    <!-- Footer section for each page  -->
+    <footer class="footer">
+        <div class="footer-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title large_title">About Us</h4>
+                            <p>
+                                Abode is a specialist boutique, a one-stop online destination for quality gifts, homewares,
+                                and selective electronics. We go to great lengths to source only the best quality goods,
+                                that stand out above the rest.
+                            </p>
+                            <p>
+                                Have confidence in buying from our collection of expertly handpicked items,
+                                designed to suit any style and personality.
+                            </p>
+                        </div>
+                    </div>
+                    <div class="offset-lg-1 col-lg-2 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Quick Links</h4>
+                            <ul class="list">
+                                <li><a href="/Home">Home</a></li>
+                                <li><a href="/Catalogue">Shop</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Login</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="offset-lg-1 col-lg-3 col-md-6 col-sm-6">
+                        <div class="single-footer-widget tp_widgets">
+                            <h4 class="footer_title">Contact Us</h4>
+                            <div class="ml-40">
+                                <p class="sm-head">
+                                    <span class="fa fa-location-arrow"></span>
+                                    Head Office
+                                </p>
+                                <p>1170, Adelaide Street, Brisbane CBD, QLD 4001</p>
+
+                                <p class="sm-head">
+                                    <span class="fa fa-phone"></span>
+                                    Phone Numbers
+                                </p>
+                                <p>
+                                    (07) 3396 9223 <br>
+                                    0405 995 500
+                                </p>
+
+                                <p class="sm-head">
+                                    <span class="fa fa-envelope"></span>
+                                    Email
+                                </p>
+                                <p>
+                                    info@abodeboutique.com <br>
+                                    www.abodeboutique.com
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="row d-flex">
+                    <p class="col-lg-12 footer-text text-center">
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                        Copyright &copy;
+                        <script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Javascript for Bootstrap, loaded last to prevent scope issues -->
+    <script src="/lib/twitter-bootstrap/js/bootstrap.js"></script>
+
+</body>
+</html>

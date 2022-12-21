@@ -1,0 +1,48 @@
+﻿@model Product
+@{
+    var zeroAdded = TempData["Zero"] as string;
+}
+
+<!-- Html/View for the individual product details page -->
+<div class="product_image_area">
+    <div class="container">
+        <div class="row s_product_inner">
+            <div class="col-lg-6">
+                <img class="img-fluid" src="@Model.Image" alt="@Model.Name">
+            </div>
+            <div class="col-lg-5 offset-lg-1">
+                <div class="s_product_text">
+                    <h3>@Model.Name</h3>
+                    <h2>@($"{Model.Price:C2}")</h2>
+                    <ul class="list">
+                        <li><a class="active" href="#"><span>Category</span> : @Model.Category</a></li>
+                    </ul>
+                    <p>@Model.Description</p>
+                    
+                    <form asp-page="/Cart" method="post" id="productSingle">
+                        <input type="hidden" name="productId" value="@Model.ProductID" />
+                        <div class="product_count">
+                            <label for="quantity">Quantity:</label>
+
+                            <input type="text" name="quantity" id="sst" size="2" maxlength="12" value="1" title="Quantity:" class="input-text qty">
+
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst )) result.value++;return false;"
+                                    class="increase items-count" type="button">
+                                <i class="fa fa-angle-up"></i>
+                            </button>
+
+                            <button onclick="var result = document.getElementById('sst'); var sst = result.value; if( !isNaN( sst ) &amp;&amp; sst > 0 ) result.value--;return false;"
+                                    class="reduced items-count" type="button">
+                                <i class="fa fa-angle-down"></i>
+                            </button>
+                        </div>
+                        <button type="submit" id="submit-btn" class="btn btn-primary">Add To Cart</button>
+
+                        <!-- the /Catalogue url is passed to the cart, as the return URL -->
+                        <input type="hidden" name="returnUrl" value="/Catalogue" />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

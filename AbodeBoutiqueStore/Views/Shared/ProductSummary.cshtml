@@ -1,0 +1,22 @@
+﻿@model Product
+
+<!-- HTML/View for the products in the Catalogue pages -->
+<div class="col-md-6 col-lg-4">
+    <div class="card text-center card-product">
+        <div class="card-product__img">
+            <a href="/product/@Model.ProductID">
+                <img class="card-img" src="@Model.Image" alt="@Model.Name">
+            </a>
+            <ul class="card-product__imgOverlay">
+                <li><button><i class="fa fa-search"></i></button></li>
+                <li><button><i class="fa fa-shopping-cart"></i></button></li>
+                <li><button><i class="fa fa-heart"></i></button></li>
+            </ul>
+        </div>
+        <div class="card-body">
+            <p>@Model.Category</p>
+            <h4 class="card-product__title"><a href="/product/@Model.ProductID">@Model.Name</a></h4>
+            <p class="card-product__price">@($"{Model.Price:C2}")</p>
+        </div>
+    </div>
+</div>

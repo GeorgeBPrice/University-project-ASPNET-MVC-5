@@ -1,0 +1,67 @@
+﻿@model IQueryable<Product>
+
+<!-- this is the html markup and structure for the catalog view -->
+
+<!--  banner area html -->
+<section class="blog-banner-area" id="category">
+    <div class="container">
+        <div class="blog-banner">
+            <div class="text-center">
+                <h1>Shop</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--  category section start html -->
+<section class="section-margin--small mb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-3 col-lg-4 col-md-5">
+                <div class="sidebar-categories">
+                    <div class="head">Browse Categories</div>
+                    <div class="categories">
+                        <vc:navigation-menu />
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-9 col-lg-8 col-md-7">
+                <!-- Start Filter Bar -->
+                <div class="filter-bar d-flex flex-wrap align-items-center">
+                    <div class="sorting">
+                        <select>
+                            <option value="0">None</option>
+                            <option value="1">Price Ascending</option>
+                            <option value="2">Price Descending</option>
+                        </select>
+                    </div>
+                    <div class="sorting me-auto">
+                        <select>
+                            <option value="0">Show 10</option>
+                            <option value="1">Show 20</option>
+                            <option value="2">Show 50</option>
+                        </select>
+                    </div>
+                    <div>
+                        <div class="input-group filter-bar-search">
+                            <input type="text" placeholder="Search">
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-primary" type="button"><i class="fa fa-search"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!--  html and foreach loop to dynamically populate the catalog with -->
+                <section class="lattest-product-area pb-40 category-list">
+                    <div class="row">
+                        @foreach (var p in Model)
+                        {
+                            <partial name="ProductSummary" model="p" />
+                        }
+                    </div>
+                </section>
+            </div>
+        </div>
+    </div>
+</section>
